@@ -1,67 +1,104 @@
-#include<iostream>
-using namespace std;
+// C program for the above approach
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Function to implement the game
+int game(char you, char computer)
+{
+	// If both the user and computer
+	// has choose the same thing
+	if (you == computer)
+		return -1;
+
+	// If user's choice is stone and
+	// computer's choice is paper
+	if (you == 's' && computer == 'p')
+		return 0;
+
+			// If user's choice is paper and
+			// computer's choice is stone
+			else if (you == 'p' && computer == 's') 
+			return 1;
+
+	// If user's choice is stone and
+	// computer's choice is scissor
+	if (you == 's' && computer == 'z')
+		return 1;
+
+	// If user's choice is scissor and
+	// computer's choice is stone
+	else if (you == 'z' && computer == 's')
+		return 0;
+
+	// If user's choice is paper and
+	// computer's choice is scissor
+	if (you == 'p' && computer == 'z')
+		return 0;
+
+	// If user's choice is scissor and
+	// computer's choice is paper
+	else if (you == 'z' && computer == 'p')
+		return 1;
+}
+
+// Driver Code
 int main()
 {
-    string email,loc,report;
-    cout<<"                                  WEATHER APP                         \n";
-    /*Name:Janani M
-    College name:Vivekanandha College of ENgineering for Women
-    datas used:Email id,Location,report
-    Methods used:if else statement
-    */
-    cout << "email id: ";
-    cin>>email;
-    cout << "current location: ";
-    cin>>loc;
-    cout << "Do you want the weather for a day or for the week?(Enter'day'or'week'): ";
-    cin>>report;
-    cout << "The " << report <<" report for "<< loc << " is:\n";
-    if (report=="day") 
-    {
-        int date;
-        cout<<"enter date:\n";
-        cin>>date;
-        cout << "WEATHER: Sunny\n";
-        cout<<"TEMPERATURE:\n";
-        cout << "High: 75°F\n";
-        cout << "Low: 55°F\n";
-    } 
-    else if (report=="week") 
-    {
-        cout << "Date:01.05.2023\n";
-        cout << "Climate: Sunny\n";
-        cout << "High: 75°F\n";
-        cout << "Low: 55°F\n";
-        cout << "\n";
-        cout << "Date:02.05.2023\n";
-        cout << "Climate: Cloudy\n";
-        cout << "High: 70°F\n";
-        cout << "Low: 52°F\n";
-        cout << "Date:03.05.2023\n";
-        cout << "Climate: rainy\n";
-        cout << "High: 62°F\n";
-        cout << "Low: 49°F\n";
-        cout << "Date:04.05.2023\n";
-        cout << "Climate: Cloudy\n";
-        cout << "High: 70°F\n";
-        cout << "Low: 52°F\n";
-        cout << "Date:05.05.2023\n";
-        cout << "Climate: thunderstorm\n";
-        cout << "High: 70°F\n";
-        cout << "Low: 42°F\n";
-        cout << "Date:06.05.2023\n";
-        cout << "Climate: dry\n";
-        cout << "High: 70°F\n";
-        cout << "Low: 52°F\n";
-        cout << "Date:07.05.2023\n";
-        cout << "Climate: sunny\n";
-        cout << "High: 70°F\n";
-        cout << "Low: 52°F\n";
-    }
-    else
-    {
-        cout << "Invalid report type entered\n";
-    }
+	// Stores the random number
+	int n;
 
-    return 0;
+	char you, computer, result;
+
+	// Chooses the random number
+	// every time
+	srand(time(NULL));
+
+	// Make the random number less
+	// than 100, divided it by 100
+	n = rand() % 100;
+
+	// Using simple probability 100 is
+	// roughly divided among stone,
+	// paper, and scissor
+	if (n < 33)
+
+		// s is denoting Stone
+		computer = 's';
+
+	else if (n > 33 && n < 66)
+
+		// p is denoting Paper
+		computer = 'p';
+
+	// z is denoting Scissor
+	else
+		computer = 'z';
+
+	printf("\n\n\n\n\t\t\t\tEnter s for STONE, p for PAPER and z for SCISSOR\n\t\t\t\t\t\t\t");
+
+	// input from the user
+	scanf("%c", &you);
+
+	// Function Call to play the game
+	result = game(you, computer);
+
+	if (result == -1) {
+		printf("\nGame Draw!\n");
+	}
+	else if (result == 1) {
+		printf("\nWow! You have won the game!\n");
+	}
+	else {
+		printf("\nOh! You have lost the game!\n");
+	}
+		printf("\t\tYOu choose : %c and Computer choose : %c\n",you, computer);
+
+	return 0;
 }
+
+
+
+    
+        
